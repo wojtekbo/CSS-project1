@@ -1,0 +1,313 @@
+$color-main: #34ace0;
+$color-main-dark: #044b69;
+$color-medium: #d4eff1;
+$color-light: #fff;
+$color-black: #000000;
+$font-main: "Open Sans", sans-serif;
+$font-title: "Kaisei Decol", serif;
+
+/* Global */
+*,
+*::before,
+*::after {
+   box-sizing: border-box;
+}
+
+html {
+   font-size: 16px;
+}
+
+body {
+   margin: 0;
+   text-align: center;
+   background: #fff;
+   color: #3d3d3d;
+   font-size: 0.9rem;
+   line-height: 1.7;
+   font-family: $font-main;
+}
+
+section {
+   padding: 7rem 0;
+   // do weryfikacji pozniej - gorny i dolny ma miec 108px
+}
+
+.container {
+   max-width: 1140px;
+   margin: 0 auto;
+   padding: 0 20px;
+}
+
+.section-title {
+   position: relative;
+   font-size: 2rem;
+   margin: 0 0 60px 0;
+   font-family: $font-title;
+}
+.section-title::after {
+   position: absolute;
+   content: "";
+   bottom: -1.2rem;
+   left: 50%;
+   width: 50px;
+   height: 10px;
+   transform: translateX(-50%);
+   background-color: $color-main;
+}
+button {
+   padding: 0.7rem 1.2rem;
+   border: 0;
+   border-radius: 0;
+   background-color: $color-main;
+   color: $color-light;
+   font-family: $font-main;
+}
+
+/* Splash */
+.splash {
+   // /* element ma wyskość okna przegladarki */
+   height: 100vh;
+   position: relative;
+   background-image: url(https://images.pexels.com/photos/4974915/pexels-photo-4974915.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260);
+   // /* wysrodkowuje grafike */
+   background-position: top center;
+   // /* grafika pokrywa caly obszar, dopasowuje sie ucinajac krawedzi */
+   background-size: cover;
+   // /* grafika jest zakotwiczona w miejscu, pomimo przsuwania strony */
+   background-attachment: fixed;
+}
+
+/* dodałem przyciemnienie tła */
+.splash::after {
+   position: absolute;
+   content: "";
+   width: 100vw;
+   height: 100vh;
+   left: 0;
+   top: 0;
+   background-color: $color-main-dark;
+   z-index: 1;
+   opacity: 0.4;
+}
+/* wyciagniecie elementów (dzieci splash) powyzej przyciemnienia tła*/
+.splash > * {
+   z-index: 10;
+}
+
+.splash-inner {
+   position: absolute;
+   width: 100%;
+   // /* wiecej o zastosowenej metodzie centorwania: https://www.freecodecamp.org/news/how-to-center-anything-with-css-align-a-div-text-and-more/ */
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+}
+
+.splash i {
+   font-size: 2.5rem;
+   background: $color-main;
+   width: 4rem;
+   height: 4rem;
+   // /* wyrównanie w pionie */
+   line-height: 4rem;
+   color: $color-light;
+   // /* zaokrąglenie tła */
+   border-radius: 50%;
+}
+.page-title {
+   position: relative;
+   color: $color-light;
+   font-size: 4rem;
+   margin: 1rem 0 0 0;
+   font-family: $font-title;
+}
+.page-title::after {
+   position: absolute;
+   content: "";
+   bottom: -1rem;
+   left: 50%;
+   width: 100px;
+   height: 10px;
+   transform: translateX(-50%);
+   background-color: $color-main;
+}
+.page-subtitle {
+   color: $color-light;
+   font-size: 1.3rem;
+   margin: 2rem 0 2rem 0;
+   font-family: $font-main;
+   font-weight: 200;
+}
+
+/* Intro */
+.intro {
+   background: $color-light;
+}
+.intro p {
+   width: 70%;
+   margin: 0 auto;
+   padding: 2rem 0;
+   font-size: 1.2rem;
+   border-top: 4px double $color-black;
+   border-bottom: 4px double $color-black;
+}
+
+/* About */
+.about {
+   background-color: $color-medium;
+}
+
+/* Skills */
+[class^="skill-"] {
+   position: relative;
+}
+
+.skill-title {
+   font-family: $font-main;
+   font-size: 1.4rem;
+}
+
+.skill-image {
+   position: absolute;
+   width: 50%;
+   height: 100%;
+   overflow: hidden;
+}
+
+.skill-image img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+}
+
+.skill-right .skill-image {
+   right: 0;
+}
+
+.skill-right .skill-description {
+   padding: 30px 55% 30px 0;
+   text-align: right;
+}
+
+.skill-left .skill-description {
+   padding: 30px 0 30px 55%;
+   text-align: left;
+}
+
+/* Footer */
+.page-footer {
+   background-color: $color-main-dark;
+   height: 55px;
+}
+
+.page-footer p {
+   padding-top: 17px;
+   color: $color-light;
+   font-size: 0.8rem;
+}
+
+/* Portfolio */
+.portfolio {
+}
+
+.portfolio-row::before,
+.portfolio-row::after {
+   clear: both;
+   content: "";
+   display: table;
+}
+
+/* container */
+.portfolio-item {
+   position: relative;
+   float: left;
+   width: 33.3333%;
+   height: 300px;
+   overflow: hidden;
+}
+
+/* zdjecie */
+.portfolio-item img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   opacity: 1;
+   transition: 0.5s ease;
+}
+.portfolio-item:hover img {
+   opacity: 0.4;
+}
+/* opis i przycisk*/
+.item-details {
+   position: absolute;
+   width: 60%;
+   height: 50%;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   transition: 0.5s ease;
+   opacity: 0;
+}
+.portfolio-item:hover .item-details {
+   opacity: 1;
+}
+/* tytul projektu */
+.item-title {
+   color: $color-black;
+   font-size: 1.3rem;
+   font-family: $font-main;
+   font-weight: 500;
+}
+/* przycisk zdefiniowany wyzej w globalnych stylach */
+
+/* Contact */
+.contact {
+   background-color: $color-medium;
+}
+
+.sm-container {
+   width: 33%;
+   margin: 0 auto;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.contact {
+   button {
+      outline: 1px $color-main solid;
+      transition: 0.7s ease;
+   }
+   input,
+   textarea {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 0;
+      border: none;
+      margin-bottom: 1rem;
+      font-family: $font-main;
+      font-size: 0.75rem;
+      outline: 1px $color-light solid;
+      transition: 0.7s ease;
+   }
+   textarea {
+      min-width: 100%;
+      max-width: 100%;
+   }
+}
+
+.contact {
+   button:hover,
+   button:focus,
+   input:hover,
+   textarea:hover,
+   input:focus,
+   textarea:focus {
+      outline: 1px $color-main-dark solid;
+   }
+}
+
+/* footer */
+.page-footer p {
+   margin: 0;
+}
